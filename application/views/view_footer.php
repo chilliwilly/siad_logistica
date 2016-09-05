@@ -11,29 +11,31 @@
     </div><!-- ./wrapper -->
 
     <!-- Bootstrap 3.3.5 -->
-    <script src="<?php echo base_url()?>bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>bootstrap/js/bootstrap.min.js"></script>
     <!-- SlimScroll -->
-    <script src="<?php echo base_url()?>plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="<?php echo base_url();?>plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
-    <script src="<?php echo base_url()?>plugins/fastclick/fastclick.min.js"></script>
+    <script src="<?php echo base_url();?>plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="<?php echo base_url()?>dist/js/app.min.js"></script>
+    <script src="<?php echo base_url();?>dist/js/app.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="<?php echo base_url()?>dist/js/demo.js"></script>
+    <script src="<?php echo base_url();?>dist/js/demo.js"></script>
 
     <!-- InputMask -->
-    <script src="<?php echo base_url()?>plugins/input-mask/jquery.inputmask.js"></script>
-    <script src="<?php echo base_url()?>plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-    <script src="<?php echo base_url()?>plugins/input-mask/jquery.inputmask.extensions.js"></script>
+    <script src="<?php echo base_url();?>plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="<?php echo base_url();?>plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="<?php echo base_url();?>plugins/input-mask/jquery.inputmask.extensions.js"></script>
     <!-- date-range-picker -->
-    <script src="<?php echo base_url()?>plugins/daterangepicker/moment.min.js"></script>
-    <script src="<?php echo base_url()?>plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="<?php echo base_url();?>plugins/daterangepicker/moment.min.js"></script>
+    <script src="<?php echo base_url();?>plugins/daterangepicker/daterangepicker.js"></script>
     <!-- bootstrap color picker -->
-    <script src="<?php echo base_url()?>plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+    <script src="<?php echo base_url();?>plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
     <!-- bootstrap time picker -->
-    <script src="<?php echo base_url()?>plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="<?php echo base_url();?>plugins/timepicker/bootstrap-timepicker.min.js"></script>
     <!-- bootstrap datepicker -->
-    <script src="<?php echo base_url()?>plugins/datepicker/bootstrap-datepicker.js"></script>    
+    <script src="<?php echo base_url();?>plugins/datepicker/bootstrap-datepicker.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="<?php echo base_url();?>js/bootstrap-select.min.js"></script>
     <!-- DataTables
     <script src="<?php echo base_url(); ?>plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url(); ?>plugins/datatables/dataTables.bootstrap.min.js"></script>-->
