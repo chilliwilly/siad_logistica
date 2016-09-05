@@ -1,5 +1,5 @@
 <style>
-th{
+/*th{
   text-shadow; text-shadow: 1px 0 0 #fff,
   -1px 0 0 #fff,
   0 1px 0 #fff,
@@ -8,7 +8,7 @@ th{
   -1px -1px 0 #fff,
   1px -1px 0 #fff,
   -1px 1px 0 #fff;
-}
+}*/
 
 .hiddenRow {
   padding: 0 !important;
@@ -29,7 +29,7 @@ th{
 <section class="content">
 	<div class="box box-default">
 	  <div class="box-header with-border">
-	    <h3 class="box-title">Ajustes - Traspasos</h3>
+	    <h3 class="box-title">Detalle Stock</h3>
 	  </div>
 	  <div class="box-body">
 
@@ -40,43 +40,12 @@ th{
             <ul class="nav nav-tabs">
               <li class="active"><a href="#tab_ajuste" data-toggle="tab">Ajustes</a></li>
               <li><a href="#tab_traspaso" data-toggle="tab">Traspasos</a></li>
+              <li><a href="#tab_despacho" data-toggle="tab">Despacho</a></li>
+              <li><a href="#tab_consumo" data-toggle="tab">Consumo</a></li>
             </ul>
 
             <div class="tab-content">
               <div class="tab-pane active" id="tab_ajuste">
-                <div class="col-xs-12">
-          				<div class="form-group col-xs-4">
-          					<div class="form-group has-feedback">
-          		        <label for="cbo_aliado_aju">Aliado</label>
-          		        <select name="cbo_aliado_aju" id="cbo_aliado_aju" class="form-control selectpicker show-tick" data-size="10"></select>
-          		      </div>
-          				</div>
-
-          				<div class="form-group col-xs-4">
-          					<div class="form-group has-feedback">
-          						<div class="form-group">
-                          <label>Rango Fecha</label>
-                          <div class="input-group">
-                            <div class="input-group-addon">
-                              <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" class="form-control pull-right" id="fecha_ajuste">
-                          </div>
-                          <!-- /.input group -->
-                        </div>
-          		      </div>
-          				</div>
-
-          				<div class="form-group col-xs-4">
-          					<div class="form-group has-feedback">
-          						<button class="btn btn-primary">
-                        <span class="glyphicon glyphicon-search"></span>
-                        Filtrar
-                      </button>
-          					</div>
-          				</div>
-          			</div>
-
                 <table class="table table-inverse table-bordered table-hover">
                   <thead>
           	        <tr bgcolor="#FE2E2E">
@@ -120,42 +89,8 @@ th{
                   </tbody>
                 </table>
               </div>
-              <!-- /.tab-pane -->
 
               <div class="tab-pane" id="tab_traspaso">
-                <div class="col-xs-12">
-          				<div class="form-group col-xs-4">
-          					<div class="form-group has-feedback">
-          		        <label for="cbo_aliado_tras">Aliado</label>
-          		        <select name="cbo_aliado_tras" id="cbo_aliado_tras" class="form-control selectpicker show-tick" data-size="10"></select>
-          		      </div>
-          				</div>
-
-          				<div class="form-group col-xs-4">
-          					<div class="form-group has-feedback">
-          						<div class="form-group">
-                          <label>Rango Fecha</label>
-                          <div class="input-group">
-                            <div class="input-group-addon">
-                              <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" class="form-control pull-right" id="fecha_traspaso">
-                          </div>
-                          <!-- /.input group -->
-                        </div>
-          		      </div>
-          				</div>
-
-          				<div class="form-group col-xs-4">
-          					<div class="form-group has-feedback">
-          						<button class="btn btn-primary">
-                        <span class="glyphicon glyphicon-search"></span>
-                        Filtrar
-                      </button>
-          					</div>
-          				</div>
-          			</div>
-
                 <table class="table table-inverse table-bordered table-hover">
                   <thead>
           	        <tr bgcolor="#FE2E2E">
@@ -185,10 +120,10 @@ th{
           		              # code...
           									if($nom_aliado == $value->aliado){
           										echo '<tr bgcolor="#F6CECE">';
-          			              echo '<td class="hiddenRow"><div class="collapse tbl_traspaso'.$num_traspaso.'">'.$value->familia.'</td>';
-          			              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_traspaso'.$num_traspaso.'">'.$value->traspaso_sale.'</td>';
-          										echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_traspaso'.$num_traspaso.'">'.$value->traspaso_entra.'</td>';
-          										echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_traspaso'.$num_traspaso.'">'.$value->total.'</td>';
+          			              echo '<td class="hiddenRow"><div class="collapse tbl_traspaso'.$num_traspaso.'">'.$value->familia.'</div></td>';
+          			              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_traspaso'.$num_traspaso.'">'.$value->traspaso_sale.'</div></td>';
+          										echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_traspaso'.$num_traspaso.'">'.$value->traspaso_entra.'</div></td>';
+          										echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_traspaso'.$num_traspaso.'">'.$value->total.'</div></td>';
           			              echo '</tr>';
           									}
           		            }
@@ -199,10 +134,146 @@ th{
                   </tbody>
                 </table>
               </div>
+
+              <div class="tab-pane" id="tab_despacho">
+                <table class="table table-inverse table-bordered table-hover">
+                  <thead>
+                    <tr bgcolor="#FE2E2E">
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">Aliado Region/Familia</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">CM</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">CM WIFI</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">CM WIFI 3.0</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">DECO BASICO</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">DECO DTA BASICO</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">DECO DTA HD</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">DECO HD</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">DECO HD FULL</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">MTA</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">MTA 4 LINEAS</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">MTA 8 LINEAS</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">MTA WIFI</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">MTA WIFI 3.0</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                      if(json_decode($total_despacho)){
+                        $relleno = json_decode($aliado,true);
+                        //echo array_map("unserialize", array_unique(array_map("serialize", $relleno->aliado)));
+                        $aliados = array_column($relleno,'aliado');
+                        $ali_unico = array_unique($aliados);
+                        $num_despacho = 1;
+
+                        foreach ($ali_unico as $val) {
+                          # code...
+                          $nom_aliado = $val;
+                          echo '<tr>';
+                          echo '<th colspan="15" scope="row" bgcolor="#FA5858" data-toggle="collapse" data-target=".tbl_despacho'.$num_despacho.'">'.$val.'</th>';
+                          echo '</tr>';
+
+                          foreach (json_decode($total_despacho) as $value) {
+                            # code...
+                            if($nom_aliado == $value->aliado){
+                              echo '<tr bgcolor="#F6CECE">';
+                              echo '<td class="hiddenRow"><div class="collapse tbl_despacho'.$num_despacho.'">'.$value->aliado_region.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_despacho'.$num_despacho.'">'.$value->CM.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_despacho'.$num_despacho.'">'.$value->CM_WIFI.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_despacho'.$num_despacho.'">'.$value->CM_WIFI_3_0.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_despacho'.$num_despacho.'">'.$value->DECO_BASICO.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_despacho'.$num_despacho.'">'.$value->DECO_DTA_BASICO.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_despacho'.$num_despacho.'">'.$value->DECO_DTA_HD.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_despacho'.$num_despacho.'">'.$value->DECO_HD.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_despacho'.$num_despacho.'">'.$value->DECO_HD_FULL.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_despacho'.$num_despacho.'">'.$value->MTA.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_despacho'.$num_despacho.'">'.$value->MTA_4_LINEAS.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_despacho'.$num_despacho.'">'.$value->MTA_8_LINEAS.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_despacho'.$num_despacho.'">'.$value->MTA_WIFI.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_despacho'.$num_despacho.'">'.$value->MTA_WIFI_3_0.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_despacho'.$num_despacho.'">'.$value->total.'</div></td>';
+                              echo '</tr>';
+                            }
+                          }
+                          $num_despacho++;
+                        }
+                      }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="tab-pane" id="tab_consumo">
+                <table class="table table-inverse table-bordered table-hover">
+                  <thead>
+                    <tr bgcolor="#FE2E2E">
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">Tipo Trabajo/Familia</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">CM</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">CM WIFI</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">CM WIFI 3.0</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">DECO BASICO</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">DECO DTA BASICO</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">DECO DTA HD</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">DECO HD</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">DECO HD FULL</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">MTA</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">MTA 4 LINEAS</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">MTA 8 LINEAS</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">MTA WIFI</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">MTA WIFI 3.0</th>
+                      <th class="col-md-2" style="text-align: center; vertical-align: middle;">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                      if(json_decode($total_consumo)){
+                        $relleno = json_decode($aliado,true);
+                        //echo array_map("unserialize", array_unique(array_map("serialize", $relleno->aliado)));
+                        $aliados = array_column($relleno,'aliado');
+                        $ali_unico = array_unique($aliados);
+                        $num_consumo = 1;
+
+                        foreach ($ali_unico as $val) {
+                          # code...
+                          $nom_aliado = $val;
+                          echo '<tr>';
+                          echo '<th colspan="15" scope="row" bgcolor="#FA5858" data-toggle="collapse" data-target=".tbl_consumo'.$num_consumo.'">'.$val.'</th>';
+                          echo '</tr>';
+
+                          foreach (json_decode($total_consumo) as $value) {
+                            # code...
+                            if($nom_aliado == $value->aliado){
+                              echo '<tr bgcolor="#F6CECE">';
+                              echo '<td class="hiddenRow"><div class="collapse tbl_consumo'.$num_consumo.'">'.$value->tipo_trabajo.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_consumo'.$num_consumo.'">'.$value->CM.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_consumo'.$num_consumo.'">'.$value->CM_WIFI.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_consumo'.$num_consumo.'">'.$value->CM_WIFI_3_0.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_consumo'.$num_consumo.'">'.$value->DECO_BASICO.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_consumo'.$num_consumo.'">'.$value->DECO_DTA_BASICO.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_consumo'.$num_consumo.'">'.$value->DECO_DTA_HD.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_consumo'.$num_consumo.'">'.$value->DECO_HD.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_consumo'.$num_consumo.'">'.$value->DECO_HD_FULL.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_consumo'.$num_consumo.'">'.$value->MTA.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_consumo'.$num_consumo.'">'.$value->MTA_4_LINEAS.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_consumo'.$num_consumo.'">'.$value->MTA_8_LINEAS.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_consumo'.$num_consumo.'">'.$value->MTA_WIFI.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_consumo'.$num_consumo.'">'.$value->MTA_WIFI_3_0.'</div></td>';
+                              echo '<td style="text-align: center;" class="hiddenRow"><div class="collapse tbl_consumo'.$num_consumo.'">'.$value->total.'</div></td>';
+                              echo '</tr>';
+                            }
+                          }
+                          $num_consumo++;
+                        }
+                      }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+
 
     </div>
   </div>
