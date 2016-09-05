@@ -55,9 +55,14 @@ class Subir_data_model extends CI_Model {
     $this->db->insert_batch('tbl_sl_traspaso_tmp',$data);
   }
 
-  function InsertSysEquipoInstala($data){
+  /*function InsertSysEquipoInstala($data){
     $this->db->truncate('tbl_sl_equipo_instala_tmp');
     $this->db->insert_batch('tbl_sl_equipo_instala_tmp',$data);
+  }*/
+
+  function InsertSysConsumo($data){
+    $this->db->truncate('tbl_sl_consumo_tmp');
+    $this->db->insert_batch('tbl_sl_consumo_tmp',$data);
   }
 
   function InsertSysBaseFinal($data){
@@ -84,6 +89,12 @@ class Subir_data_model extends CI_Model {
 
   function UpdateSysTraspaso(){
     $call_procedure ="CALL sp_sl_update_traspaso()";
+    $query = $this->db->query($call_procedure);
+    //return $query->result();
+  }
+
+  function UpdateSysConsumo(){
+    $call_procedure ="CALL sp_sl_update_consumo()";
     $query = $this->db->query($call_procedure);
     //return $query->result();
   }
