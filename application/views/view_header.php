@@ -40,8 +40,9 @@
     <!-- jquery-ui css -->
     <link rel="stylesheet" href="<?php echo base_url();?>plugins/jQueryUI/jquery-ui.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/datatables.min.css">
-
     <!--<link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap-combined.min.css"/>-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap-select.min.css"/>
 
     <!-- jQuery 2.1.4 -->
     <script src="<?php echo base_url()?>plugins/jQuery/jquery-2.2.4.min.js"></script>
