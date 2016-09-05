@@ -270,7 +270,6 @@ class Subir_data extends CI_Controller {
 	        }
 	    }
 
-
 	public function deleteImage($file)//gets the job done but you might want to add error checking and security
 	    {
 	        $success =unlink(FCPATH.'uploads/' .$file);
@@ -470,6 +469,7 @@ class Subir_data extends CI_Controller {
 		$this->Subir_data_model->InsertSysTraspaso($GuardaTraspaso);
 	}
 
+	/*
 	private function insert_instala(){
 		$filename = get_filenames('server/php/files/')[0];
 		$names=array();
@@ -507,10 +507,98 @@ class Subir_data extends CI_Controller {
 				);
 			//}
 		}
-		/*echo '<pre>';
-		print_r($GuardaTraspaso);
-		echo '</pre>';*/
+
 		$this->Subir_data_model->InsertSysEquipoInstala($GuardaEquipo);
+	}
+	*/
+
+	public function insert_consumo(){
+		$filename = get_filenames('server/php/files/')[0];
+		$names=array();
+		$no=0;
+		$inputFileType = 'Excel5';
+		$objReader = IOFactory::createReader($inputFileType);
+		$objPHPExcel  = $objReader->load(FCPATH.'server/php/files/equipoconsumo.xls');//FCPATH.
+		$objWorksheet = $objPHPExcel->setActiveSheetIndex(0);
+		$maxRow = $objWorksheet->getHighestRow();
+
+		for ($i = 2; $i <= $maxRow; $i++)//$i=14; $i<=$maxRow; $i++
+		{
+			//$dato = $objWorksheet->getCell('G'.$i)->getValue();
+			//if(!in_array($dato,$ListaAjuste)){
+				$GuardaEquipo[] = array(
+					'con_fecha_primer_agenda' => PHPExcel_Shared_Date::ExcelToPHPObject($objWorksheet->getCell('A'.$i)->getValue())->format('Y-m-d'),
+					'con_hora_primer_agenda' => $objWorksheet->getCell('B'.$i)->getValue(),
+					'con_fecha_ag' => PHPExcel_Shared_Date::ExcelToPHPObject($objWorksheet->getCell('C'.$i)->getValue())->format('Y-m-d'),
+					'con_hora_ag' => $objWorksheet->getCell('D'.$i)->getValue(),
+					'con_folio' => $objWorksheet->getCell('E'.$i)->getValue(),
+					'con_estado' => $objWorksheet->getCell('F'.$i)->getValue(),
+					'con_fecha_de_creacion_orden' => $objWorksheet->getCell('G'.$i)->getValue(),//datetime
+					'con_tipo_cliente' => $objWorksheet->getCell('H'.$i)->getValue(),
+					'con_tipo_de_trabajo' => $objWorksheet->getCell('I'.$i)->getValue(),
+					'con_rut' => $objWorksheet->getCell('J'.$i)->getValue(),
+					'con_nombre_del_cliente' => $objWorksheet->getCell('K'.$i)->getValue(),
+					'con_oferta_com_ant' => $objWorksheet->getCell('L'.$i)->getValue(),
+					'con_oferta_com_ant_deco_hd' => PHPExcel_Shared_Date::ExcelToPHPObject($objWorksheet->getCell('M'.$i)->getValue())->format('Y-m-d'),
+					'con_oferta_com_ant_deco' => str_replace('Ñ','N',str_replace('ñ','n',$objWorksheet->getCell('N'.$i)->getValue())),
+					'con_oferta_com_ant_telefonia' => $objWorksheet->getCell('O'.$i)->getValue(),
+					'con_oferta_com_ant_internet' => $objWorksheet->getCell('P'.$i)->getValue(),
+					'con_oferta_com_ant_adicionales' => $objWorksheet->getCell('Q'.$i)->getValue(),
+					'con_oferta_com_act' => $objWorksheet->getCell('R'.$i)->getValue(),
+					'con_oferta_com_act_deco_hd' => $objWorksheet->getCell('S'.$i)->getValue(),
+					'con_oferta_com_act_deco' => $objWorksheet->getCell('T'.$i)->getValue(),
+					'con_oferta_com_act_telefonia' => $objWorksheet->getCell('U'.$i)->getValue(),
+					'con_oferta_com_act_internet' => $objWorksheet->getCell('V'.$i)->getValue(),
+					'con_oferta_com_act_adicionales' => $objWorksheet->getCell('W'.$i)->getValue(),
+					'con_domicilio' => $objWorksheet->getCell('X'.$i)->getValue(),
+					'con_nodo_optico' => $objWorksheet->getCell('Y'.$i)->getValue(),
+					'con_servicio' => $objWorksheet->getCell('Z'.$i)->getValue(),
+					'con_numero_de_reagendamiento' => $objWorksheet->getCell('AA'.$i)->getValue(),
+					'con_grupo_tecnicos' => $objWorksheet->getCell('AB'.$i)->getValue(),
+					'con_tipo_de_venta' => $objWorksheet->getCell('AC'.$i)->getValue(),
+					'con_id_vendedor' => $objWorksheet->getCell('AD'.$i)->getValue(),
+					'con_nombre_vendedor' => $objWorksheet->getCell('AE'.$i)->getValue(),
+					'con_fecha_de_ingreso_a_despacho' => $objWorksheet->getCell('AF'.$i)->getValue(),//datetime
+					'con_fecha_actualizacion_cierre' => $objWorksheet->getCell('AG'.$i)->getValue(),//datetime
+					'con_id_tecnico' => $objWorksheet->getCell('AH'.$i)->getValue(),
+					'con_tecnico' => $objWorksheet->getCell('AI'.$i)->getValue(),
+					'con_comuna' => $objWorksheet->getCell('AJ'.$i)->getValue(),
+					'con_usuario_creador_de_la_orden' => $objWorksheet->getCell('AK'.$i)->getValue(),
+					'con_resolucion_de_reparacion' => $objWorksheet->getCell('AL'.$i)->getValue(),
+					'con_cliente_zona' => $objWorksheet->getCell('AM'.$i)->getValue(),
+					'con_cliente_region' => $objWorksheet->getCell('AN'.$i)->getValue(),
+					'con_cliente_comuna_normalizada' => $objWorksheet->getCell('AO'.$i)->getValue(),
+					'con_aliado_agrupado_01' => $objWorksheet->getCell('AP'.$i)->getValue(),
+					'con_aliado_agrupado_02' => $objWorksheet->getCell('AQ'.$i)->getValue(),
+					'con_aliado_agrupado_03' => $objWorksheet->getCell('AR'.$i)->getValue(),
+					'con_aliado_agrupado_region' => $objWorksheet->getCell('AS'.$i)->getValue(),
+					'con_actividad_agrupada_01' => $objWorksheet->getCell('AT'.$i)->getValue(),
+					'con_actividad_agrupada_02' => $objWorksheet->getCell('AU'.$i)->getValue(),
+					'con_actividad_agrupada_03' => $objWorksheet->getCell('AV'.$i)->getValue(),
+					'con_equipo_estado' => $objWorksheet->getCell('AW'.$i)->getValue(),
+					'con_equipo_servicio' => $objWorksheet->getCell('AX'.$i)->getValue(),
+					'con_equipo_fecha_modificacion' => PHPExcel_Shared_Date::ExcelToPHPObject($objWorksheet->getCell('AY'.$i)->getValue())->format('Y-m-d'),
+					'con_equipo_mac_address_01' => $objWorksheet->getCell('AZ'.$i)->getValue(),
+					'con_equipo_mac_address_02' => $objWorksheet->getCell('BA'.$i)->getValue(),
+					'con_equipo_mta_address_01' => $objWorksheet->getCell('BB'.$i)->getValue(),
+					'con_equipo_serial' => $objWorksheet->getCell('BC'.$i)->getValue(),
+					'con_equipo_unit_address' => $objWorksheet->getCell('BD'.$i)->getValue(),
+					'con_equipo_serie_cruce' => $objWorksheet->getCell('BE'.$i)->getValue(),
+					'con_material_codigo_sap' => $objWorksheet->getCell('BF'.$i)->getValue(),
+					'con_material_descripcion' => $objWorksheet->getCell('BG'.$i)->getValue(),
+					'con_material_familia' => $objWorksheet->getCell('BH'.$i)->getValue(),
+					'con_material_centro' => $objWorksheet->getCell('BI'.$i)->getValue(),
+					'con_material_almacen' => $objWorksheet->getCell('BJ'.$i)->getValue(),
+					'con_material_pep_segundo_nivel' => $objWorksheet->getCell('BK'.$i)->getValue(),
+					'con_material_pep_tercer_nivel' => $objWorksheet->getCell('BL'.$i)->getValue(),
+					'con_material_estado' => $objWorksheet->getCell('BM'.$i)->getValue(),
+					'con_material_fecha_movimiento' => $objWorksheet->getCell('BN'.$i)->getValue(),
+					'con_fecha_carga' => $this->getFechaCarga()
+				);
+			//}
+		}
+
+		$this->Subir_data_model->InsertSysConsumo($GuardaEquipo);
 	}
 
 	public function guardaBaseFinal(){
@@ -608,6 +696,10 @@ class Subir_data extends CI_Controller {
 
 	public function runStoredProcedureTraspaso(){
 		$this->Subir_data_model->UpdateSysTraspaso();
+	}
+
+	public function runStoredProcedureConsumo(){
+		$this->Subir_data_model->UpdateSysConsumo();
 	}
 
 	private function getFechaCarga(){
