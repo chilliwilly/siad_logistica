@@ -83,8 +83,21 @@ class Logistica_general_model extends CI_Model {
   }
 
   function getStockListaAliado(){
-    $sql = "select distinct aliado from tbl_sl_base_final order by aliado";
-    $query = $this->db->query($sql);
+    //$sql = "select distinct aliado from tbl_sl_base_final order by aliado";
+    //$query = $this->db->query($sql);
+    $this->db->distinct();
+    $this->db->select('aliado');
+    $this->db->from('tbl_sl_base_final');
+    $this->db->order_by('aliado');
+    $query = $this->db->get();
+    return $query->result();
+  }
+
+  function getStockMaterialAliado($nom_column, $aliado_id){
+    $this->db->select($nom_column);
+    $this->db->from('tbl_sl_stock_aliado');
+    $this->db->where('aliado_id',$aliado_id);
+    $query = $this->db->get();
     return $query->result();
   }
 }
