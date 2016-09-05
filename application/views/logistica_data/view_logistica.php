@@ -15,12 +15,8 @@ th{
   var baseurl = "<?php echo base_url(); ?>";
 </script>
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap-select.min.css"/>
-<!-- Latest compiled and minified JavaScript -->
-<script src="<?php echo base_url();?>js/bootstrap-select.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>js/jsLoadDropdown.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>js/i18n/datepicker-es.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>js/jsLoadDropdown.js"></script>
 
 <section class="content">
 	<div class="box box-default">
@@ -65,7 +61,7 @@ th{
 				<thead>
 	        <tr bgcolor="#FE2E2E">
 	          <th class="col-md-2" style="text-align: center; vertical-align: middle;">Aliado/Equipos</th>
-	          <th class="col-md-2" style="text-align: center; vertical-align: middle;">Cantidad</th>
+	          <th class="col-md-2" style="text-align: center; vertical-align: middle;">Stock Calculado</th>
 						<th class="col-md-2" style="text-align: center;">Stock Aliado Declarado</th>
 						<th class="col-md-2" style="text-align: center; vertical-align: middle;">Diferencial</th>
 						<th class="col-md-2" style="text-align: center; vertical-align: middle;">Stock Inicial</th>
@@ -97,8 +93,8 @@ th{
 										echo '<tr bgcolor="#F6CECE">';
 			              echo '<td>'.$value->familia.'</td>';
 			              echo '<td style="text-align: center;">'.$value->qty.'</td>';
-										echo '<td style="text-align: center;">a</td>';
-										echo '<td style="text-align: center;">a</td>';
+										echo '<td style="text-align: center;">'.$value->stock_material.'</td>';
+										echo '<td style="text-align: center;">'.$value->dif_material.'</td>';
 										echo '<td style="text-align: center;">'.$value->stock_inicial.'</td>';
 										echo '<td style="text-align: center;">'.$value->despachos.'</td>';
 										echo '<td style="text-align: center;">'.$value->consumos.'</td>';
