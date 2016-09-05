@@ -16,7 +16,7 @@ class Login_model extends CI_Model {
                      menu_rol,
                      menu_cierre
               from tbl_sl_menu
-              where menu_id in (select menu_id from tbl_sl_menu_rol where rol_id = ?) order by menu_id";
+              where menu_id in (select menu_id from tbl_sl_menu_rol where rol_id = ?) order by field (menu_id,1,2,8,3)";
 	    $query = $this->db->query($sql,$rolid);
 
 		return $query->result();
